@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
-
 <body>
     <header class="header">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/IMSS_logo.svg/50px-IMSS_logo.svg.png" alt="Logo Superior Izquierdo" style="position: absolute; top: 10px; left: 10px;">
@@ -22,7 +20,7 @@
             <a href="#"><i class="fas fa-search"></i></a>
         </nav>
     </header>
-
+    
     <main class="container">
         <div class="tabs">
             <div id="tab-curp" onclick="mostrarFormulario('curp')">Clave Única de Registro de Población</div>
@@ -116,33 +114,30 @@
             <a href="#">Preguntas frecuentes</a>
         </section>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script>
-        document.getElementById("submit-btn").addEventListener("click", function(event) {
-            event.preventDefault();
-            const {
-                jsPDF
-            } = window.jspdf;
-            const doc = new jsPDF();
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    document.getElementById("submit-btn").addEventListener("click", function(event) {
+        event.preventDefault();
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        let nombre = document.getElementById("nombre").value;
+        let primerApellido = document.getElementById("primer-apellido").value;
+        let segundoApellido = document.getElementById("segundo-apellido").value;
+        let diaNacimiento = document.getElementById("dia-nacimiento").value;
+        let mesNacimiento = document.getElementById("mes-nacimiento").value;
+        let anoNacimiento = document.getElementById("ano-nacimiento").value;
+        let sexo = document.getElementById("sexo").value;
+        let estado = document.getElementById("estado").value;
 
-            let nombre = document.getElementById("nombre").value;
-            let primerApellido = document.getElementById("primer-apellido").value;
-            let segundoApellido = document.getElementById("segundo-apellido").value;
-            let diaNacimiento = document.getElementById("dia-nacimiento").value;
-            let mesNacimiento = document.getElementById("mes-nacimiento").value;
-            let anoNacimiento = document.getElementById("ano-nacimiento").value;
-            let sexo = document.getElementById("sexo").value;
-            let estado = document.getElementById("estado").value;
-
-            doc.text("Datos Personales", 20, 20);
-            doc.text(`Nombre: ${nombre} ${primerApellido} ${segundoApellido}`, 20, 30);
-            doc.text(`Fecha de Nacimiento: ${diaNacimiento} de ${mesNacimiento}, ${anoNacimiento}`, 20, 40);
-            doc.text(`Sexo: ${sexo}`, 20, 50);
-            doc.text(`Estado: ${estado}`, 20, 60);
-
-            doc.save("Datos_Personales.pdf");
-        });
-    </script>
+        doc.text("Datos Personales", 20, 20);
+        doc.text(`Nombre: ${nombre} ${primerApellido} ${segundoApellido}`, 20, 30);
+        doc.text(`Fecha de Nacimiento: ${diaNacimiento} de ${mesNacimiento}, ${anoNacimiento}`, 20, 40);
+        doc.text(`Sexo: ${sexo}`, 20, 50);
+        doc.text(`Estado: ${estado}`, 20, 60);
+        
+        doc.save("Datos_Personales.pdf");
+    });
+</script>
 </body>
-
 </html>
